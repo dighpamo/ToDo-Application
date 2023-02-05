@@ -1,21 +1,14 @@
 import React from 'react';
 
-function TodoItem({ task, tasks, setTasks }) {
+function TodoItem({ task, toggleComplete }) {
   const handleChange = () => {
-    setTasks(
-      tasks.map((t) => {
-        if (t === task) {
-          return { ...t, isCompleted: !t.isCompleted };
-        }
-        return t;
-      })
-    );
+    toggleComplete(task.id);
   };
 
   return (
     <li className="todo-item">
-      <input type="checkbox" checked={task.isCompleted} onChange={handleChange} />
-      <span className={task.isCompleted ? 'completed' : ''}>{task.text}</span>
+      <input type="checkbox" checked={task.completed} onChange={handleChange} />
+      <span className={task.completed ? 'completed' : ''}>{task.task}</span>
     </li>
   );
 }
