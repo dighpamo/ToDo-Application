@@ -12,7 +12,7 @@ function Header() {
       </Link>
       <button onClick={() => setMenuOpen(!menuOpen)}>Open menu</button>
       {menuOpen && (
-        <nav className="header-nav">
+        <nav className={`header-nav ${menuOpen ? 'open' : ''}`}>
           <Link to="/" className="header-nav-item">
             Home
           </Link>
@@ -21,7 +21,12 @@ function Header() {
           </Link>
         </nav>
       )}
-      {menuOpen && <div className="overlay" />}
+      {menuOpen && (
+        <div
+          className={`overlay ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
     </header>
   );
 }
